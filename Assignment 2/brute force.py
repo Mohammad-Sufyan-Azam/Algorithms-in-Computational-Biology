@@ -11,21 +11,21 @@ def get_best_motif(motif):
     
     best_motif = ''
     best_score = 0
-    print(motif)
+    # print(motif)
 
     for i in range(L):
         score = 0
         char = ''
         
         for j in range(T):
-            print(motif[j], end='')
-            if motif[j][i] == 'A':
+            # print(motif[j][i], end='')
+            if motif[j][i].upper() == 'A':
                 profile_matrix[0][i] += 1
-            elif motif[j][i] == 'C':
+            elif motif[j][i].upper() == 'C':
                 profile_matrix[1][i] += 1
-            elif motif[j][i] == 'G':
+            elif motif[j][i].upper() == 'G':
                 profile_matrix[2][i] += 1
-            elif motif[j][i] == 'T':
+            elif motif[j][i].upper() == 'T':
                 profile_matrix[3][i] += 1
             
             if profile_matrix[0][i] > score:
@@ -40,26 +40,11 @@ def get_best_motif(motif):
             elif profile_matrix[3][i] > score:
                 score = profile_matrix[3][i]
                 char = 'T'
-        print()
+        # print()
         best_motif += char
         best_score += score
                 
     # print(profile_matrix)
-    # score = 0
-    # best_motif = ''
-    # for i in range(len(profile_matrix[0])):
-    #     max_count = max(profile_matrix[:, i])
-    #     for j in range(len(profile_matrix)):
-    #         if profile_matrix[j][i] == max_count:
-    #             score += profile_matrix[j][i]
-    #             if j == 0:
-    #                 best_motif += 'A'
-    #             elif j == 1:
-    #                 best_motif += 'C'
-    #             elif j == 2:
-    #                 best_motif += 'G'
-    #             elif j == 3:
-    #                 best_motif += 'T'
     return best_motif, score
 
 
@@ -84,13 +69,13 @@ def find_best_motif(sequences, l_mer):
     # motifs is a dictionary {seq: [motif1, motif2, ...]}
     for seq, motif in motifs.items():
         best_results[seq] = get_best_motif(motif)
-        break
+        # break
     return best_results
 
 
 start = time.time()
-# Read the DNA sequences from the csv file.
 data = pd.read_csv('dna.csv', header=None)
+
 # Convert the DNA sequences to a list.
 sequences = data.values.flatten().tolist()
 
