@@ -1,0 +1,18 @@
+This is a research project based on the paper "High Quality Protein Q8 Secondary Structure Prediction by Diverse Neural Network Architectures" by Jian Zhou, Olga G. Troyanskaya, and Jian Peng.
+
+The Q8 refers to the 8 states of secondary structures in proteins: alpha helix (H), beta strand (E), coil (C), 3-10 helix (G), pi helix (I), beta bridge (B), turn (T), and bend (S). 
+Accurate prediction of these secondary structures is crucial for understanding protein function and interactions.
+
+The key aspects of the approach can be summarized as follows:
+
+1. **Data Preparation**: Removed redundant cells that lead to overfitting as they came in both training and testing values. After the filtration, the new data was used.
+
+3. **Features and Output Classes**: 46 features per residue was used to classify each residue into one of 8 classes. These features included one-hot encoding for residue type, residue profiles from PSI-BLAST, and binary features indicating the sequence's start and end positions.
+
+4. **Neural Network Architectures**: Four diverse neural network architectures, each with different structures and characteristics were explored. These architectures included Bidirectional LSTMs with Attention: 64.10, Bidirectional GRU with Convolutional Blocks, Temporal Convolutional  Network, and Bidirectional GRU with 2D  Convolution.
+
+5. **Training and Evaluation**: The architectures were trained on the filtered dataset and the results were noted as follows - 
+    a. Bidirectional LSTMs with Attention: 64.10  ( Mean Accuracy ) 
+    b. Bidirectional GRU with Convolutional Blocks : 62.04 ( Mean Accuracy )
+    c. Temporal Convolutional  Network : 60.25  ( Mean Accuracy )
+    d. Bidirectional GRU with 2D  Convolution: 68.30 ( Mean Accuracy )
